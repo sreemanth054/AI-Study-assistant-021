@@ -1,7 +1,7 @@
 # AI Study Assistant
 
-**Student Name:** TODO  
-**Roll Number:** TODO  
+**Student Name:** Sreemanth Vaddi
+**Roll Number:** AM.SC.P2CSN26021  
 
 ## Project Overview
 
