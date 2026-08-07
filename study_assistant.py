@@ -35,20 +35,33 @@ def load_questions(question_file: str) -> list[dict[str, Any]]:
     Milestone 4:
     Handle missing files and invalid JSON gracefully.
     """
-    # TODO: Implement this function.
-    return []
+    try:
+        with open(question_file, "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"Questions file '{question_file}' not found.")
+        return []
+   
 
 
 def select_question(
     questions: list[dict[str, Any]],
 ) -> dict[str, Any] | None:
-    """Display available questions and return the user's selection."""
-    # TODO:
-    # - Display numbered questions.
-    # - Ask the user to select one.
-    # - Validate the input.
-    return None
+    print("\nAvailable questions:")
+    for i, q in enumerate(questions, start=1):
+        print(f"{i}. [{q.get('topic', 'Unknown')}] {q.get('question', '')}")
 
+    choice = input("\nSelect a question number: ").strip()
+    if not choice.isdigit():
+        print("Invalid selection.")
+        return None
+
+    index = int(choice) - 1
+    if 0 <= index < len(questions):
+        return questions[index]
+
+    print("Invalid selection.")
+    return None
 
 def complete_study_session(
     selected_question: dict[str, Any],
