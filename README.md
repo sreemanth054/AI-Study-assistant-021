@@ -5,11 +5,18 @@
 
 ## Project Overview
 
-TODO: Briefly explain the purpose of the completed AI Study Assistant.
+The AI Study Assistant is a CLI based Python program for aiding users in going through study questions, reflecting on them in their own language, and keeping track of their progress. It allows users to launch a study session, view previous sessions, perform searches in their session history using keywords, and export sessions to markdown documents. The project grew incrementally using Git from a simple Version 1, which had core features of launching and storing sessions, to a better Version 2.
 
 ## Implemented Features
 
-TODO: Replace this section with a concise list of the features you completed.
+- Load study questions from a JSON file and select one to study
+- Complete a study session and save a record 
+- View previously saved study sessions
+- Search study history by keyword 
+- Export a selected study session 
+- Display the three most recent sessions automatically on startup
+- Configurable file paths and settings via `config.py`
+- error handling for missing or invalid JSON files
 
 ## Project Structure
 
@@ -27,33 +34,68 @@ study_assistant/
 
 ## Installation and Setup
 
-TODO: Explain how to create and activate a virtual environment.
+1. Clone the repository and go into the project folder:
 
-TODO: Explain how to install the required dependencies.
+```bash
+git clone <repository-url>
+cd study_assistant
+```
+
+2. Create a virtual environment:
+
+```bash
+python3 -m venv venv
+```
+
+3. Activate the virtual environment.
+
+For macOS/Linux:
+
+```bash
+source venv/bin/activate
+```
+
+For Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+4. Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Running the Application
 
-TODO: Add the command used to run the program.
+After activating the virtual environment, run the application using:
+
+```bash
+python3 study_assistant.py
+```
+
+The application will show a menu where you can start a study session, view previous sessions, search through the history, or export a session.
+
 
 ## Generated Files
 
 The completed application may generate:
 
-- `history.json`
-- an `exports/` directory containing Markdown files
+- `history.json` — stores all saved study sessions
+- an `exports/` directory containing Markdown files for exported sessions
 
-TODO: Explain whether these generated files should be tracked by Git.
+These are user-specific, generated at runtime rather than part of the source code, so they are excluded from version control via `.gitignore` and are not tracked by Git.
 
 ## Version Summary
 
 ### Version 1
 
-TODO: Summarise the core functionality included in Version 1.
+Version 1 focused on building the basic application. It loads questions from sample_questions.json, lets the user select a question and write a personal reflection, saves the sessions to history.json, and allows the user to view previous sessions through a menu-driven interface.
 
 ### Version 2
 
-TODO: Summarise the enhancements included in Version 2.
-
+Version 2 was developed on a separate branch and added some new features to Version 1. These included searching saved sessions using keywords, exporting individual sessions as Markdown files, showing the last three sessions as "Recent Activity" when the program starts, and moving the file paths to config.py instead of keeping them hardcoded. After completing the changes, the branch was merged back into main.
 ## Notes
 
 - Do not include real API keys, passwords or access tokens.
