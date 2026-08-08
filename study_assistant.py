@@ -124,12 +124,18 @@ def run_export() -> None:
 
     display_history(history)
 
-    # TODO (Milestone 3):
-    # - Ask the user to select a session.
-    # - Validate the selection.
-    # - Export it using export_session().
-    # - Display the output path.
+    choice = input("\nEnter the number of the session to export: ").strip()
+    if not choice.isdigit():
+        print("Invalid selection.")
+        return
 
+    index = int(choice) - 1
+    if not (0 <= index < len(history)):
+        print("Invalid selection.")
+        return
+
+    filepath = export_session(history[index], "exports")
+    print(f"\nSession exported to: {filepath}")
 
 def display_menu() -> None:
     """Print the main application menu."""
