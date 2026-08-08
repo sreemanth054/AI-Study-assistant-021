@@ -23,3 +23,9 @@ Thumbs.db
 .vscode/
 .cursor/
 .idea/
+
+#git
+git_branch.txt
+git_log.txt
+git_status.txt
+git_remote.txt
