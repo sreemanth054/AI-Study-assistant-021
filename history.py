@@ -12,13 +12,15 @@ from typing import Any
 
 
 def load_history(history_file: str) -> list[dict[str, Any]]:
-    """Return all saved study sessions."""
     path = Path(history_file)
     if not path.exists():
         return []
-
-    with open(path, "r") as f:
-        return json.load(f)
+    try:
+        with open(path, "r") as f:
+            return json.load(f)
+    except json.JSONDecodeError:
+        print(f"History file '{history_file}' contains invalid JSON. Starting with empty history.")
+        return []
 
 
 def save_session(history_file: str, session: dict[str, Any]) -> None:

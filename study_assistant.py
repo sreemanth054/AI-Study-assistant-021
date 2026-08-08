@@ -26,19 +26,14 @@ from config import QUESTIONS_FILE, HISTORY_FILE, RECENT_ACTIVITY_LIMIT
 
 
 def load_questions(question_file: str) -> list[dict[str, Any]]:
-    """Load study questions from a JSON file.
-
-    Milestone 2:
-    Read and return the list stored in sample_questions.json.
-
-    Milestone 4:
-    Handle missing files and invalid JSON gracefully.
-    """
     try:
         with open(question_file, "r") as f:
             return json.load(f)
     except FileNotFoundError:
         print(f"Questions file '{question_file}' not found.")
+        return []
+    except json.JSONDecodeError:
+        print(f"Questions file '{question_file}' contains invalid JSON.")
         return []
    
 
