@@ -46,14 +46,14 @@ def search_history(
     history: list[dict[str, Any]],
     keyword: str,
 ) -> list[dict[str, Any]]:
-    """Return sessions matching a keyword.
-
-    Milestone 3:
-    Search the topic, question and notes using a case-insensitive comparison.
-    """
-    # TODO: Implement this function.
-    return []
-
+    """Return sessions matching a keyword."""
+    keyword_lower = keyword.lower()
+    return [
+        session for session in history
+        if keyword_lower in session.get("topic", "").lower()
+        or keyword_lower in session.get("question", "").lower()
+        or keyword_lower in session.get("notes", "").lower()
+    ]
 
 def export_session(
     session: dict[str, Any],
