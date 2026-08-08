@@ -6,40 +6,40 @@ during the appropriate assignment milestones.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 from typing import Any
 
 
 def load_history(history_file: str) -> list[dict[str, Any]]:
-    """Return all saved study sessions.
+    """Return all saved study sessions."""
+    path = Path(history_file)
+    if not path.exists():
+        return []
 
-    Milestone 2:
-    - Return an empty list if the history file does not exist.
-    - Read valid JSON history from the file.
-
-    Milestone 4:
-    - Handle invalid JSON without crashing the application.
-    """
-    # TODO: Implement this function.
-    return []
+    with open(path, "r") as f:
+        return json.load(f)
 
 
 def save_session(history_file: str, session: dict[str, Any]) -> None:
     """Append a study session to the history file."""
-    # TODO:
-    # 1. Load the existing history.
-    # 2. Add the new session.
-    # 3. Save the complete history as JSON.
-    pass
+    history = load_history(history_file)
+    history.append(session)
+
+    with open(history_file, "w") as f:
+        json.dump(history, f, indent=2)
 
 
 def display_history(history: list[dict[str, Any]]) -> None:
     """Print saved sessions in a readable format."""
-    # TODO:
-    # - Show a clear message when no sessions exist.
-    # - Otherwise display a numbered list with the timestamp, topic,
-    #   question and notes for each session.
-    pass
+    if not history:
+        print("No study sessions found.")
+        return
+
+    for i, session in enumerate(history, start=1):
+        print(f"\n{i}. [{session.get('timestamp')}] {session.get('topic')}")
+        print(f"   Q: {session.get('question')}")
+        print(f"   Notes: {session.get('notes')}")
 
 
 def search_history(
