@@ -22,8 +22,7 @@ from prompts import APP_TITLE, format_study_prompt
 
 # Version 1 begins with direct file-path values.
 # Milestone 3 requires these values to be read from config.py.
-QUESTIONS_FILE = "sample_questions.json"
-HISTORY_FILE = "history.json"
+from config import QUESTIONS_FILE, HISTORY_FILE, RECENT_ACTIVITY_LIMIT
 
 
 def load_questions(question_file: str) -> list[dict[str, Any]]:
@@ -97,13 +96,12 @@ def start_study_session() -> None:
 
 
 def show_recent_activity(history: list[dict[str, Any]]) -> None:
-    """Display the three most recent sessions when the application starts.
-
-    Milestone 3:
-    Replace the fixed value with RECENT_ACTIVITY_LIMIT from config.py.
-    """
-    # TODO: Implement the Recent Activity enhancement.
-    pass
+    """Display the three most recent sessions when the application starts."""
+    if not history:
+        return
+    print("\nRecent Activity:")
+    recent = history[-RECENT_ACTIVITY_LIMIT:]
+    display_history(recent)
 
 
 def run_search() -> None:
@@ -149,8 +147,8 @@ def display_menu() -> None:
 
 def main() -> None:
     """Run the menu-driven application."""
-    # TODO (Milestone 3):
-    # Load the history and show Recent Activity when the program starts.
+    history = load_history(HISTORY_FILE)
+    show_recent_activity(history)
 
     while True:
         display_menu()
