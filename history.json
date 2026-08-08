@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-08-08T11:03:21",
+    "topic": "Python Functions",
+    "question": "What is the difference between printing a value and returning a value from a function?",
+    "notes": "Printing a value only displays it on the screen, while returning a value sends it back to the program so it can be used later."
+  },
+  {
+    "timestamp": "2026-08-08T11:03:40",
+    "topic": "Prompt Design",
+    "question": "How can additional context improve the quality of an LLM prompt?",
+    "notes": "Providing additional context helps an LLM better understand the task, leading to more accurate and relevant responses."
+  },
+  {
+    "timestamp": "2026-08-08T11:04:24",
+    "topic": "Git Branches",
+    "question": "Why is it useful to develop a new feature on a separate branch?",
+    "notes": "Using a separate branch lets you develop and test a new feature without affecting the main code, making it safer to make changes and fix mistakes."
+  },
+  {
+    "timestamp": "2026-08-08T11:05:04",
+    "topic": "Git Commits",
+    "question": "What makes a Git commit small, logical and meaningful?",
+    "notes": "A good Git commit contains one clear change or purpose, making it easy to understand, review, and undo if needed."
+  }
+]
